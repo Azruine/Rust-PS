@@ -1,0 +1,22 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=${fileBasenameNoExtension}",
+                    "--package=rust"
+                ]
+            },
+            "stdio": [
+                "${workspaceFolder}/io/${fileBasenameNoExtension}.input.txt",
+                "${workspaceFolder}/io/${fileBasenameNoExtension}.output.txt"
+            ],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}

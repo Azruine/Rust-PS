@@ -1,0 +1,77 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Cargo Build Debug",
+            "type": "shell",
+            "command": "cargo",
+            "args": [
+                "build",
+                "--bin",
+                "${fileBasenameNoExtension}"
+            ],
+            "options": {
+                "statusbar": {
+                    "hide": true
+                }
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Cargo Build Release",
+            "type": "shell",
+            "command": "cargo",
+            "args": [
+                "build",
+                "--release",
+                "--bin",
+                "${fileBasenameNoExtension}"
+            ],
+            "options": {
+                "statusbar": {
+                    "hide": true
+                }
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Run Release",
+            "type": "shell",
+            "command": "bash",
+            "args": [
+                "-c",
+                "${workspaceFolder}/target/release/${fileBasenameNoExtension}",
+                "<",
+                "${workspaceFolder}/io/${fileBasenameNoExtension}.input.txt",
+                ">",
+                "${workspaceFolder}/io/${fileBasenameNoExtension}.output.txt",
+            ],
+            "dependsOn": [
+                "Cargo Build Release"
+            ]
+        },
+        {
+            "label": "Memory",
+            "type": "shell",
+            "command": "\/usr\/bin\/time",
+            "args": [
+                "-f",
+                "Max Memory Usage: %MKB User Time: %Us System Time: %Ss Elapsed Time: %Es",
+                "${workspaceFolder}/target/release/${fileBasenameNoExtension}",
+                "<",
+                "${workspaceFolder}/io/${fileBasenameNoExtension}.input.txt",
+                ">",
+                "${workspaceFolder}/io/${fileBasenameNoExtension}.output.txt",
+            ],
+            "dependsOn": [
+                "Cargo Build Release"
+            ]
+        },
+    ],
+}
