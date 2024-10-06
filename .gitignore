@@ -1,8 +1,0 @@
-/target
-/io
-/.vscode
-/src/main.rs
-/src/test.rs
-/rust.code-workspace
-/Cargo.lock
-/Cargo.toml
