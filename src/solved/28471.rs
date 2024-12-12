@@ -62,34 +62,5 @@ fn main() {
             path_cnt += 1;
         }
     }
-    // let mut path_cnt = 0;
-    // for (i, j) in start_pos {
-    //     let mut visited = vec![vec![false; n as usize]; n as usize];
-    //     let mut q = std::collections::VecDeque::new();
-    //     q.push_back((i, j));
-    //     visited[i as usize][j as usize] = true;
-    //     while let Some((x, y)) = q.pop_front() {
-    //         if (x, y) == goal {
-    //             break;
-    //         }
-    //         for (dx, dy) in &dir {
-    //             let nx = x + dx;
-    //             let ny = y + dy;
-    //             if nx >= 0
-    //                 && nx < n
-    //                 && ny >= 0
-    //                 && ny < n
-    //                 && !visited[nx as usize][ny as usize]
-    //                 && map[nx as usize][ny as usize] != '#'
-    //             {
-    //                 visited[nx as usize][ny as usize] = true;
-    //                 q.push_back((nx, ny));
-    //             }
-    //         }
-    //     }
-    //     if visited[goal.0 as usize][goal.1 as usize] {
-    //         path_cnt += 1;
-    //     }
-    // }
     println!("{}", path_cnt);
 }
