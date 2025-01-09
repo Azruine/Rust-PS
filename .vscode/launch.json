@@ -17,6 +17,24 @@
                 "${workspaceFolder}/io/${fileBasenameNoExtension}.output.txt"
             ],
             "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Release executable",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=${fileBasenameNoExtension}",
+                    "--package=rust",
+                    "--release"
+                ]
+            },
+            "stdio": [
+                "${workspaceFolder}/io/${fileBasenameNoExtension}.input.txt",
+                "${workspaceFolder}/io/${fileBasenameNoExtension}.output.txt"
+            ],
+            "cwd": "${workspaceFolder}"
         }
     ]
 }
