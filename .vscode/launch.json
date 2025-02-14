@@ -10,8 +10,11 @@
                     "build",
                     "--bin=${fileBasenameNoExtension}",
                     "--package=rust"
-                ]
+                ],
             },
+            "initCommands": [
+                "settings set target.disable-aslr false"
+            ],
             "stdio": [
                 "${workspaceFolder}/io/${fileBasenameNoExtension}.input.txt",
                 "${workspaceFolder}/io/${fileBasenameNoExtension}.output.txt"
@@ -30,6 +33,9 @@
                     "--release"
                 ]
             },
+            "initCommands": [
+                "settings set target.disable-aslr false"
+            ],
             "stdio": [
                 "${workspaceFolder}/io/${fileBasenameNoExtension}.input.txt",
                 "${workspaceFolder}/io/${fileBasenameNoExtension}.output.txt"

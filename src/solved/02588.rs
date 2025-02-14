@@ -1,5 +1,4 @@
-fn main()
-{
+fn main() {
     let mut a = String::new();
     let mut b = String::new();
     std::io::stdin().read_line(&mut a).unwrap();

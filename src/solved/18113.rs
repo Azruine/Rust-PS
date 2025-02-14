@@ -1,5 +1,4 @@
-fn main()
-{
+fn main() {
     let mut string = String::new();
     std::io::stdin().read_line(&mut string).unwrap();
     let mut iter = string.split_whitespace();
@@ -9,48 +8,34 @@ fn main()
     let mut a: Vec<i64> = Vec::new();
     let mut ans = -1;
     let mut r = 0;
-    for _ in 0..n
-    {
+    for _ in 0..n {
         let mut string = String::new();
         std::io::stdin().read_line(&mut string).unwrap();
         let temp: i64 = string.trim().parse().unwrap();
-        if temp >= 2 * k
-        {
+        if temp >= 2 * k {
             a.push(temp - 2 * k);
             r = std::cmp::max(r, temp - 2 * k);
-        }
-        else if temp >= k
-        {
+        } else if temp >= k {
             a.push(temp - k);
             r = std::cmp::max(r, temp - k);
-        }
-        else
-        {   
+        } else {
             continue;
-        }   
+        }
     }
-    if a.len() as i64 == 0
-    {
+    if a.len() as i64 == 0 {
         println!("{}", ans);
-    }
-    else
-    {
+    } else {
         let mut l = 1;
-        while l <= r
-        {
+        while l <= r {
             let mid = (l + r) / 2;
             let mut sum = 0;
-            for i in a.iter()
-            {
+            for i in a.iter() {
                 sum += i / mid;
             }
-            if sum >= m
-            {
+            if sum >= m {
                 ans = mid;
                 l = mid + 1;
-            }
-            else
-            {
+            } else {
                 r = mid - 1;
             }
         }
