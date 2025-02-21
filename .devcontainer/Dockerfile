@@ -1,7 +1,7 @@
 FROM rust:bullseye
 
-RUN rustup component add rustfmt && \
-    rustup component add clippy
+# RUN rustup component add rustfmt && \
+#     rustup component add clippy
 
 # RUN apt-get update && apt-get install -y git curl unzip
 
