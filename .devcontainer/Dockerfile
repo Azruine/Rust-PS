@@ -1,12 +1,17 @@
 FROM rust:bullseye
 
-# RUN rustup component add rustfmt && \
-#     rustup component add clippy
+RUN rustup component add rustfmt && \
+    rustup component add clippy
 
-# RUN apt-get update && apt-get install -y git curl unzip
+ARG USERNAME=azruine
+ARG USER_UID=1000
+ARG USER_GID=$USER_UID
 
-# RUN curl -fsSL https://github.com/git-ecosystem/git-credential-manager/releases/latest/download/gcm-linux_amd64.2.6.0.deb -o gcm.deb && \
-#     dpkg -i gcm.deb && \
-#     rm gcm.deb
+RUN groupadd --gid $USER_GID $USERNAME \
+    && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME -s /bin/bash \
+    && apt-get update \
+    && apt-get install -y sudo \
+    && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
+    && chmod 0440 /etc/sudoers.d/$USERNAME
 
-# RUN git-credential-manager configure
+USER $USERNAME
